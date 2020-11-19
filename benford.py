@@ -7,12 +7,25 @@
 # PURPOSE: A package to analyze a dataset of numbers and apply the Benfords Law
 #
 #   Usage:
-#  
+#  ush
 #   
 ##
 
 # Imports python modules
 
 class Benford:
-    pass
+    
+    def __init__(self, dataset):
+        """
+        Function to initialize the class
 
+        Parameters:
+        -------------------------
+        dataset: A dataset containing numbers, can be a pandas dataset, an numpy array, a list
+        """
+        self.dataset = dataset
+        pass
+
+    def dataset_read(self, dir)
+        """ Function to read a dataset using pandas"""
+        pass
