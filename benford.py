@@ -3,12 +3,16 @@
 #
 # PROGRAMMER:    Rafael Mata M.
 # DATE CREATED:  19 Nov 2020                                
-# REVISED DATE:  19 Nov 2020
-# PURPOSE: A package to analyze a dataset of numbers and apply the Benfords Law
+# REVISED DATE:  20 Nov 2020
+# PURPOSE: A Class to analyze a dataset of numbers and apply the Benfords Law counting the frequency of the first digit
+#          from 1 - 9
 #
-#   Usage:
-#  ush
-#   
+#  Usage:
+#         1. Create a new object with the class Benford, with an numpy array or list, or
+#         2. Load a dataset with the method: load_dataset(args) or
+#         3. Load an image with the method: load_image(args)
+#         4. Analyze the data with the mehtod: apply_benford(args)
+#         5. Plot the results or export to a file
 ##
 
 # Imports python modules
@@ -46,7 +50,7 @@ class Benford:
         dataset = np.asarray(dataset)
         dataset = np.abs(dataset)
         dataset = dataset[dataset > 0]
-        self.dataset = pd.read_csv(dir, sep=sep )
+        self.dataset = dataset
 
         return None
 
