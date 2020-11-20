@@ -23,7 +23,7 @@ import matplotlib.pyplot as plt
 
 class Benford:
     
-    def __init__(self, dataset=None):
+    def __init__(self, dataset=None, normalized=True):
         """
         Function to initialize the class
 
@@ -32,6 +32,9 @@ class Benford:
         dataset: A dataset containing numbers, a numpy array  or a list
         """
         self.dataset = dataset
+        self.normalized = normalized
+        self.digits = np.array(range(1,10))      
+        self.digits_count = np.zeros(9) 
         
         return None
 
@@ -72,3 +75,15 @@ class Benford:
         self.dataset = image
 
         return None
+
+    def benford_analysis(self):
+           """ Function to analyze a dataset using the Benford´s Law, counting the frequency of first digits
+            Parameters:
+            -------------
+            dataset: a numpy array containing integers
+
+            Returns:
+            -------------
+            self.digits_count: Updated with the digits frequency normalized
+        """
+
