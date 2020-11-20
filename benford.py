@@ -25,11 +25,41 @@ class Benford:
 
         Parameters:
         -------------------------
-        dataset: A dataset containing numbers, can be a pandas dataset, an numpy array, a list
+        dataset: A dataset containing numbers, a numpy array  or a list
         """
         self.dataset = dataset
-        pass
+        
+        return None
 
-    def load_dataset(self, dir, type='csv'):
-        """ Function to read a dataset using pandas"""
-        pass
+    def load_dataset(self, dir, sep=','):
+        """ Function to read a dataset using pandas
+            Parameters:
+            -------------
+            dir: str, address of the dataset and name
+
+            Returns:
+            -------------
+            None
+        """
+        self.dataset = pd.read_csv(dir, sep=sep )
+
+        return None
+
+    def load_dataset(self, dir):
+        """ Function to read an image using numpy
+            Parameters:
+            -------------
+            dir: str, address of the image, a local file or a http address
+
+            Returns:
+            -------------
+            None
+        """
+        
+        image = np.array(Image.open(dir))
+        image = np.abs(image)                #Convert all values to positive
+        image = image[image > 0]             #Remove the values with 0 
+    
+        self.dataset = image
+
+        return None
