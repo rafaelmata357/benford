@@ -13,9 +13,13 @@
 
 # Imports python modules
 
+import pandas as import pd
+import numpy as np
+import matplotlib.pyplot as plt 
+
 class Benford:
     
-    def __init__(self, dataset):
+    def __init__(self, dataset=None):
         """
         Function to initialize the class
 
@@ -26,6 +30,6 @@ class Benford:
         self.dataset = dataset
         pass
 
-    def dataset_read(self, dir)
+    def load_dataset(self, dir, type='csv'):
         """ Function to read a dataset using pandas"""
         pass
