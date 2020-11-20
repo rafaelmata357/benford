@@ -132,6 +132,24 @@ class Benford:
 
         return None
 
+        def export_to_csv(self, path):
+            """ Function to export the benford analysis results to a file as a dataframe
+            Parameters:
+            -------------
+            
+            path = str, path and filename where to save the results
+         
+            Returns:
+            -------------
+            A saved .csv file
+            """
+
+            df = pd.DataFrame({'P(D)':self.digits_count,'Benford_reference':[30.1,17.6,12.5,9.7,7.9,6.7,5.8,5.1,4.6]},index=self.digits)
+            df.to_csv(path)
+
+            return None
+
+
 
         
 
