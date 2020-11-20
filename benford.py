@@ -17,9 +17,10 @@
 
 # Imports python modules
 
-import pandas as import pd
+import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt 
+from PIL import Image
 
 class Benford:
     
@@ -36,6 +37,7 @@ class Benford:
         self.normalized = normalized
         self.digits = np.array(range(1,10))      
         self.digits_count = np.zeros(9) 
+        self.reference = np.array([30.1,17.6,12.5,9.7,7.9,6.7,5.8,5.1,4.6])
         
         return None
 
@@ -78,7 +80,7 @@ class Benford:
         return None
 
     def benford_analysis(self):
-           """ Function to analyze a dataset using the Benford´s Law, counting the frequency of first digits
+        """ Function to analyze a dataset using the Benford´s Law, counting the frequency of first digits
             Parameters:
             -------------
             dataset: a numpy array containing integers
@@ -88,7 +90,7 @@ class Benford:
             self.digits_count: Updated with the digits frequency normalized
         """
 
-        numbers, counts = np.unique(T, return_counts = True)      # Count the numbers in the dataset and their frequency
+        numbers, counts = np.unique(self.dataset, return_counts = True)      # Count the numbers in the dataset and their frequency
     
         numerical_units = np.log10(numbers).astype(int)     # Get the int part of log base 10 of the numbers to know the number of units (10s, 100s, 1000s) 
         first_digit = numbers//10**numerical_units          # Get the first digit using  numbers // 10^numerical_units
@@ -100,3 +102,36 @@ class Benford:
     
    
         return None
+
+        def plot(self, figsize=(10,6)):
+            """ Function to plot the benford results
+            Parameters:
+            -------------
+            
+            figsize = tuple, size of the figure to plot
+            self.digits
+            self.digits_count
+
+            Returns:
+            -------------
+            A bar chart display in the screen
+            """
+
+            plt.figure(figsize=figsize)
+            plt.title('Benford Analysis')
+            plt.xlabel('Digit')
+            if self.normalize:
+                plt.ylabel('%')
+            else:
+                plt.ylabel('Freq')
+
+            plt.grid(True)
+            plt.bar(self.digits, self.digits_count, color='g')
+
+        return None
+
+
+        
+
+
+
