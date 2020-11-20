@@ -41,11 +41,16 @@ class Benford:
             -------------
             None
         """
+        
+        dataset = pd.read_csv(dir, sep=sep )
+        dataset = np.asarray(dataset)
+        dataset = np.abs(dataset)
+        dataset = dataset[dataset > 0]
         self.dataset = pd.read_csv(dir, sep=sep )
 
         return None
 
-    def load_dataset(self, dir):
+    def load_image(self, dir):
         """ Function to read an image using numpy
             Parameters:
             -------------
