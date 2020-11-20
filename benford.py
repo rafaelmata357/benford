@@ -29,7 +29,8 @@ class Benford:
 
         Parameters:
         -------------------------
-        dataset: A dataset containing numbers, a numpy array  or a list
+        dataset: numpy array, A dataset containing numbers
+        normalized: boolean
         """
         self.dataset = dataset
         self.normalized = normalized
@@ -87,3 +88,15 @@ class Benford:
             self.digits_count: Updated with the digits frequency normalized
         """
 
+        numbers, counts = np.unique(T, return_counts = True)      # Count the numbers in the dataset and their frequency
+    
+        numerical_units = np.log10(numbers).astype(int)     # Get the int part of log base 10 of the numbers to know the number of units (10s, 100s, 1000s) 
+        first_digit = numbers//10**numerical_units          # Get the first digit using  numbers // 10^numerical_units
+    
+        
+        # Summarize the first digit counts
+        for digit in self.digits:
+            self.digits_count[digit-1] = counts[first_digit==digit].sum()
+    
+   
+        return None
