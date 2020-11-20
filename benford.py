@@ -127,6 +127,8 @@ class Benford:
 
             plt.grid(True)
             plt.bar(self.digits, self.digits_count, color='g')
+            if self.normalize:
+                plt.bar(self.digits, self.reference)
 
         return None
 
