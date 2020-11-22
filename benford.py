@@ -133,7 +133,7 @@ class Benford:
         return None
 
         def export_to_csv(self, path):
-            """ Function to export the benford analysis results to a file as a dataframe
+            """ Function to export the benford analysis results to a file as a dataframe, including the benford reference values
             Parameters:
             -------------
             
