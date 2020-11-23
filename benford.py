@@ -54,8 +54,6 @@ class Benford:
         
         dataset = pd.read_csv(dir, sep=sep )
         dataset = np.asarray(dataset)
-        dataset = np.abs(dataset)
-        dataset = dataset[dataset > 0]
         self.dataset = dataset
 
         return None
@@ -72,9 +70,6 @@ class Benford:
         """
         
         image = np.array(Image.open(dir))
-        image = np.abs(image)                #Convert all values to positive
-        image = image[image > 0]             #Remove the values with 0 
-    
         self.dataset = image
 
         return None
@@ -90,6 +85,10 @@ class Benford:
             self.digits_count: Updated with the digits frequency normalized
         """
 
+        
+        dataset = np.abs(dataset)                #Convert all values to positive
+        dataset = dataset[dataset > 0]             #Remove the values with 0 
+        
         numbers, counts = np.unique(self.dataset, return_counts = True)      # Count the numbers in the dataset and their frequency
     
         numerical_units = np.log10(numbers).astype(int)     # Get the int part of log base 10 of the numbers to know the number of units (10s, 100s, 1000s) 
