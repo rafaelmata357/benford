@@ -98,6 +98,9 @@ class Benford:
         # Summarize the first digit counts
         for digit in self.digits:
             self.digits_count[digit-1] = counts[first_digit==digit].sum()
+
+        if self.normalized:                                                 # If normalized, get the digits probability
+            self.digits_count = self.digits_count/self.digits_count.sum()*100
     
    
         return None
@@ -116,18 +119,23 @@ class Benford:
         A bar chart display in the screen
         """
 
-        plt.figure(figsize=figsize)
-        plt.title('Benford Analysis')
-        plt.xlabel('Digit')
+        
+        fig, ax = plt.subplots(nrows=1, ncols=1, figsize=figsize)
+        
+        ax.set_title('Benford Law Analysis')
+        ax.set_xlabel('Digits')
         if self.normalized:
-            plt.ylabel('%')
+            ax.set_ylabel('%')
         else:
-            plt.ylabel('Freq')
+            ax.set_ylabel('Freq')
 
-        plt.grid(True)
-        plt.bar(self.digits, self.digits_count, color='g')
-        if self.normalize:
-            plt.bar(self.digits, self.reference)
+        
+        
+        if self.normalized:
+            df = pd.DataFrame({'P(D)':self.digits_count,'Benford_reference':[30.1,17.6,12.5,9.7,7.9,6.7,5.8,5.1,4.6]},index=self.digits)
+            df.plot.bar(ax=ax,grid=True)
+        else:
+            ax.bar(self.digits, self.digits_count, color='g')
             
         plt.show()
 
