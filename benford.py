@@ -86,8 +86,8 @@ class Benford:
         """
 
         
-        self.dataset = np.abs(self.dataset)                #Convert all values to positive
-        self.dataset = dataset[self.dataset > 0]             #Remove the values with 0 
+        self.dataset = np.abs(self.dataset)                       #Convert all values to positive
+        self.dataset = self.dataset[self.dataset > 0]             #Remove the values with 0 
         
         numbers, counts = np.unique(self.dataset, return_counts = True)      # Count the numbers in the dataset and their frequency
     
@@ -102,51 +102,53 @@ class Benford:
    
         return None
 
-        def plot(self, figsize=(10,6)):
-            """ Function to plot the benford results
-            Parameters:
-            -------------
+    def plot(self, figsize=(10,6)):
+        """ Function to plot the benford results
+        Parameters:
+        -------------
             
-            figsize = tuple, size of the figure to plot
-            self.digits
-            self.digits_count
+        figsize = tuple, size of the figure to plot
+        self.digits
+        self.digits_count
 
-            Returns:
-            -------------
-            A bar chart display in the screen
-            """
+        Returns:
+        -------------
+        A bar chart display in the screen
+        """
 
-            plt.figure(figsize=figsize)
-            plt.title('Benford Analysis')
-            plt.xlabel('Digit')
-            if self.normalize:
-                plt.ylabel('%')
-            else:
-                plt.ylabel('Freq')
+        plt.figure(figsize=figsize)
+        plt.title('Benford Analysis')
+        plt.xlabel('Digit')
+        if self.normalized:
+            plt.ylabel('%')
+        else:
+            plt.ylabel('Freq')
 
-            plt.grid(True)
-            plt.bar(self.digits, self.digits_count, color='g')
-            if self.normalize:
-                plt.bar(self.digits, self.reference)
+        plt.grid(True)
+        plt.bar(self.digits, self.digits_count, color='g')
+        if self.normalize:
+            plt.bar(self.digits, self.reference)
+            
+        plt.show()
 
         return None
 
-        def export_to_csv(self, path):
-            """ Function to export the benford analysis results to a file as a dataframe, including the benford reference values
-            Parameters:
-            -------------
+    def export_to_csv(self, path):
+        """ Function to export the benford analysis results to a file as a dataframe, including the benford reference values
+        Parameters:
+        -------------
             
-            path = str, path and filename where to save the results
+        path = str, path and filename where to save the results
          
-            Returns:
-            -------------
-            A saved .csv file
-            """
+        Returns:
+        -------------
+        A saved .csv file
+        """
 
-            df = pd.DataFrame({'P(D)':self.digits_count,'Benford_reference':[30.1,17.6,12.5,9.7,7.9,6.7,5.8,5.1,4.6]},index=self.digits)
-            df.to_csv(path)
+        df = pd.DataFrame({'P(D)':self.digits_count,'Benford_reference':[30.1,17.6,12.5,9.7,7.9,6.7,5.8,5.1,4.6]},index=self.digits)
+        df.to_csv(path)
 
-            return None
+        return None
 
 
 
