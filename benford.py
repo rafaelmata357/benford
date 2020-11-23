@@ -119,7 +119,6 @@ class Benford:
         A bar chart display in the screen
         """
 
-        
         fig, ax = plt.subplots(nrows=1, ncols=1, figsize=figsize)
         
         ax.set_title('Benford Law Analysis Results',fontsize=20)
@@ -129,8 +128,8 @@ class Benford:
             ax.set_ylabel('Freq', fontsize=16)
              
         if self.normalized:
-            df = pd.DataFrame({'P(D)':self.digits_count,'Benford Reference':[30.1,17.6,12.5,9.7,7.9,6.7,5.8,5.1,4.6]},index=self.digits)
-            df.plot.bar(ax=ax,grid=False,  color=['#5cb85c','teal'], width=0.8)
+            df = pd.DataFrame({'Benford Reference':[30.1,17.6,12.5,9.7,7.9,6.7,5.8,5.1,4.6],'P(D)':self.digits_count},index=self.digits)
+            df.plot.bar(ax=ax,grid=False,  color=['teal','#5cb85c'], width=0.8)
             for p in ax.patches:
                 value = '{:.01f}'.format(p.get_height()) # Get the value length
                 offset = (8 - len(value)) // 2 / 26      # Calculate the offset to center the label on the bar
@@ -161,7 +160,7 @@ class Benford:
         A saved .csv file
         """
 
-        df = pd.DataFrame({'P(D)':self.digits_count,'Benford_reference':[30.1,17.6,12.5,9.7,7.9,6.7,5.8,5.1,4.6]},index=self.digits)
+        df = pd.DataFrame({'Benford Reference':[30.1,17.6,12.5,9.7,7.9,6.7,5.8,5.1,4.6],'P(D)':self.digits_count},index=self.digits)
         df.to_csv(path)
 
         return None
