@@ -161,7 +161,8 @@ class Benford:
         """
 
         df = pd.DataFrame({'Benford Reference':[30.1,17.6,12.5,9.7,7.9,6.7,5.8,5.1,4.6],'P(D)':self.digits_count},index=self.digits)
-        df.to_csv(path)
+        df.index.rename('Digits',inplace=True)
+        df.to_csv(path, header=True)
 
         return None
 
