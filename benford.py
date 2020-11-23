@@ -86,8 +86,8 @@ class Benford:
         """
 
         
-        dataset = np.abs(dataset)                #Convert all values to positive
-        dataset = dataset[dataset > 0]             #Remove the values with 0 
+        self.dataset = np.abs(self.dataset)                #Convert all values to positive
+        self.dataset = dataset[self.dataset > 0]             #Remove the values with 0 
         
         numbers, counts = np.unique(self.dataset, return_counts = True)      # Count the numbers in the dataset and their frequency
     
