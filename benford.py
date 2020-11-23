@@ -105,7 +105,7 @@ class Benford:
    
         return None
 
-    def plot(self, figsize=(10,6)):
+    def plot(self, figsize=(12, 6)):
         """ Function to plot the benford results
         Parameters:
         -------------
@@ -122,20 +122,28 @@ class Benford:
         
         fig, ax = plt.subplots(nrows=1, ncols=1, figsize=figsize)
         
-        ax.set_title('Benford Law Analysis')
-        ax.set_xlabel('Digits')
-        if self.normalized:
-            ax.set_ylabel('%')
-        else:
-            ax.set_ylabel('Freq')
-
+        ax.set_title('Benford Law Analysis Results',fontsize=20)
+        ax.set_xlabel('Digits', fontsize=16)
         
-        
+        if not self.normalized:
+            ax.set_ylabel('Freq', fontsize=16)
+             
         if self.normalized:
-            df = pd.DataFrame({'P(D)':self.digits_count,'Benford_reference':[30.1,17.6,12.5,9.7,7.9,6.7,5.8,5.1,4.6]},index=self.digits)
-            df.plot.bar(ax=ax,grid=True)
+            df = pd.DataFrame({'P(D)':self.digits_count,'Benford Reference':[30.1,17.6,12.5,9.7,7.9,6.7,5.8,5.1,4.6]},index=self.digits)
+            df.plot.bar(ax=ax,grid=False,  color=['#5cb85c','teal'], width=0.8)
+            for p in ax.patches:
+                value = '{:.01f}'.format(p.get_height()) # Get the value length
+                offset = (8 - len(value)) // 2 / 26      # Calculate the offset to center the label on the bar
+                       
+                ax.annotate('{:.01f}'.format(p.get_height()), (p.get_x()+offset, p.get_height()+0.1),fontsize=9,  weight='bold')
         else:
             ax.bar(self.digits, self.digits_count, color='g')
+        
+        ax.set_xticklabels(ax.get_xticklabels(), rotation=0, ha='right')
+        ax.spines['top'].set_visible(False)
+        ax.spines['right'].set_visible(False)
+        ax.spines['left'].set_visible(False)
+        ax.get_yaxis().set_ticks([])
             
         plt.show()
 
