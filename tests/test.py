@@ -23,7 +23,7 @@ class TestBenfordClass(unittest.TestCase):
         
 
     def test_initialization(self): 
-        self.assertEqual(self.benford.digits, np.array([1,2,3,4,5,6,7,8,9]), 'Incorrect digits array initialization')
+        self.assertEqual(np.array_equal(self.benford.digits , np.array([1,2,3,4,5,6,7,8,9])), True , 'Incorrect digits array initialization')
         self.assertEqual(self.benford.dataset, None, 'Incorrect dataset initialization')
 
     def test_load_dataset(self):
@@ -32,6 +32,7 @@ class TestBenfordClass(unittest.TestCase):
         self.assertEqual(data_sum, 7794798739, 'data not read correctly')                # Summarize the values and check the result
 
     def test_digits_probabiliy(self):
+        self.benford.load_dataset('population.csv') 
         self.benford.benford_analysis()                                                   # Perform the Benford´s Law analysis
         digits_probability = np.round(self.benford.digits_count,decimals=2)
         self.assertEqual(digits_probability[0], 29.79, 'Digit 1 probability not calculated as expected')
@@ -45,11 +46,10 @@ class TestBenfordClass(unittest.TestCase):
         self.assertEqual(digits_probability[8], 4.68,  'Digit 9 probability not calculated as expected')
 
     def test_load_image(self):
-
-        image = self.Benford()
-        image.load_image('./flower.jpg')                                                   # Load an image and calculate the digits probability using Benford´s Law
-        image.benford_analysis()
-        self.assertEqual(image.digits_count.sum() ,100,  'The total digits probability is incorrect')
+       
+        self.benford.load_image('./flower.jpg')                                                   # Load an image and calculate the digits probability using Benford´s Law
+        self.benford.benford_analysis()
+        self.assertEqual(self.benford.digits_count.sum() ,100,  'The total digits probability is incorrect')
  
         
 
