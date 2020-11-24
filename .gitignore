@@ -1,1 +1,6 @@
 population.xlsx
+tests/__pycache__/test.cpython-38.pyc
+__pycache__/benford.cpython-38.pyc
+.ipynb_checkpoints/benford_test-checkpoint.py
+.ipynb_checkpoints/benford-checkpoint.py
+population.xls
