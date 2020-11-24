@@ -13,89 +13,46 @@
 # /usr/bin/python -m unittest test
 
 import unittest
-
+import numpy as np
 from benford import Benford
 
 
 class TestBenfordClass(unittest.TestCase):
     def setUp(self):
-        self.gaussian = Gaussian(25, 2)
-        self.gaussian.read_data_file('numbers.txt')
+        self.benford = Benford()
+        
 
     def test_initialization(self): 
-        self.assertEqual(self.gaussian.mean, 25, 'incorrect mean')
-        self.assertEqual(self.gaussian.stdev, 2, 'incorrect standard deviation')
+        self.assertEqual(self.benford.digits, np.array([1,2,3,4,5,6,7,8,9]), 'Incorrect digits array initialization')
+        self.assertEqual(self.benford.dataset, None, 'Incorrect dataset initialization')
 
-    def test_readdata(self):
-        self.assertEqual(self.gaussian.data,\
-         [1, 3, 99, 100, 120, 32, 330, 23, 76, 44, 31], 'data not read in correctly')
+    def test_load_dataset(self):
+        self.benford.load_dataset('population.csv')                                      # Load a dataset to test, base on world population
+        data_sum = self.benford.dataset.sum()
+        self.assertEqual(data_sum, 7794798739, 'data not read correctly')                # Summarize the values and check the result
 
-    def test_meancalculation(self):
-        self.assertEqual(self.gaussian.calculate_mean(),\
-         sum(self.gaussian.data) / float(len(self.gaussian.data)), 'calculated mean not as expected')
+    def test_digits_probabiliy(self):
+        self.benford.benford_analysis()                                                   # Perform the Benford´s Law analysis
+        digits_probability = np.round(self.benford.digits_count,decimals=2)
+        self.assertEqual(digits_probability[0], 29.79, 'Digit 1 probability not calculated as expected')
+        self.assertEqual(digits_probability[1], 15.74, 'Digit 2 probability not calculated as expected')
+        self.assertEqual(digits_probability[2], 12.77, 'Digit 3 probability not calculated as expected')
+        self.assertEqual(digits_probability[3], 8.94,  'Digit 4 probability not calculated as expected')
+        self.assertEqual(digits_probability[4], 11.06, 'Digit 5 probability not calculated as expected')
+        self.assertEqual(digits_probability[5], 7.66,  'Digit 6 probability not calculated as expected')
+        self.assertEqual(digits_probability[6], 3.4,   'Digit 7 probability not calculated as expected')
+        self.assertEqual(digits_probability[7], 5.96,  'Digit 8 probability not calculated as expected')
+        self.assertEqual(digits_probability[8], 4.68,  'Digit 9 probability not calculated as expected')
 
-    def test_stdevcalculation(self):
-        self.assertEqual(round(self.gaussian.calculate_stdev(), 2), 92.87, 'sample standard deviation incorrect')
-        self.assertEqual(round(self.gaussian.calculate_stdev(0), 2), 88.55, 'population standard deviation incorrect')
+    def test_load_image(self):
 
-    def test_pdf(self):
-        self.assertEqual(round(self.gaussian.pdf(25), 5), 0.19947,\
-         'pdf function does not give expected result') 
-        self.gaussian.calculate_mean()
-        self.gaussian.calculate_stdev()
-        self.assertEqual(round(self.gaussian.pdf(75), 5), 0.00429,\
-        'pdf function after calculating mean and stdev does not give expected result')      
-
-    def test_add(self):
-        gaussian_one = Gaussian(25, 3)
-        gaussian_two = Gaussian(30, 4)
-        gaussian_sum = gaussian_one + gaussian_two
+        image = self.Benford()
+        image.load_image('./flower.jpg')                                                   # Load an image and calculate the digits probability using Benford´s Law
+        image.benford_analysis()
+        self.assertEqual(image.digits_count.sum() ,100,  'The total digits probability is incorrect')
+ 
         
-        self.assertEqual(gaussian_sum.mean, 55)
-        self.assertEqual(gaussian_sum.stdev, 5)
-        
-class TestBinomialClass(unittest.TestCase):
-    def setUp(self):
-        self.binomial = Binomial(0.4, 20)
-        self.binomial.read_data_file('numbers_binomial.txt')
 
-    def test_initialization(self):
-        self.assertEqual(self.binomial.p, 0.4, 'p value incorrect')
-        self.assertEqual(self.binomial.n, 20, 'n value incorrect')
-
-    def test_readdata(self):
-        self.assertEqual(self.binomial.data,\
-         [0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0], 'data not read in correctly')
-    
-    def test_calculatemean(self):
-        mean = self.binomial.calculate_mean()
-        self.assertEqual(mean, 8)
-    
-    def test_calculatestdev(self):
-        stdev = self.binomial.calculate_stdev()
-        self.assertEqual(round(stdev,2), 2.19)
-        
-    def test_replace_stats_with_data(self):
-        p, n = self.binomial.replace_stats_with_data()
-        self.assertEqual(round(p,3), .615)
-        self.assertEqual(n, 13)
-        
-    def test_pdf(self):
-        self.assertEqual(round(self.binomial.pdf(5), 5), 0.07465)
-        self.assertEqual(round(self.binomial.pdf(3), 5), 0.01235)
-    
-        self.binomial.replace_stats_with_data()
-        self.assertEqual(round(self.binomial.pdf(5), 5), 0.05439)
-        self.assertEqual(round(self.binomial.pdf(3), 5), 0.00472)
-
-    def test_add(self):
-        binomial_one = Binomial(.4, 20)
-        binomial_two = Binomial(.4, 60)
-        binomial_sum = binomial_one + binomial_two
-        
-        self.assertEqual(binomial_sum.p, .4)
-        self.assertEqual(binomial_sum.n, 80)
-        
     
 if __name__ == '__main__':
     unittest.main()
