@@ -1,5 +1,9 @@
 # A Python package to apply the Benford´s Law analysis
 
+## Project Motivation
+
+As part of the Udacity Data Science nanodegree this is a project to create and deploy a Python package, based on this I decided to use the Benford´s Law to create a package using OOP than can apply the analyzis to a dataset, an imgae or a numpy array of numbers.
+
 ## Installation:
 
 Clone the repository to the local machine
@@ -16,12 +20,6 @@ This package uses this libraries
 
 
 The python version used: **3.8**
-
-
-## Project Motivation
-
-As part of the Udacity Data Science nanodegree this is a project to create and deploy a Python package, based on this I decided to use the Benford´s Law to create a package using OOP than can apply the analyzis to a dataset, an imgae or a numpy array of numbers.
-
 
 ## Files in the repository
 
