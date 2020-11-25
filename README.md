@@ -5,6 +5,7 @@
 Clone the repository to the local machine
 
 `$ gh repo clone rafaelmata357/benford`
+
 `pip intall .`
 
 This package uses this libraries
@@ -28,13 +29,13 @@ As part of the Udacity Data Science nanodegree this is a project to create and d
 - setup.py     : Setup file for the package
 - .gitignore   : File to ignore files and not load to the GitHub repository
 - benford
-     |----->bendord.py     :   The Benford Class
-     |----->__init__.py    :   Inititalization file for the package
+    - bendord.py     :   The Benford Class
+    - __init__.py    :   Inititalization file for the package
 - tests
-     |----->tests.py       :   Script for unit tests of the Benford Class
-     |----->Benford_plot_test.ipynb : Jupyter Notebook to test the graphs plotting ot the Benford Class
-     |----->flower.jpg     :   JPG image to test the Benford Class
-     |----->population.csv :   CSV dataset with the Wordl Population to test the Benford Class
+    - tests.py       :   Script for unit tests of the Benford Class
+    - Benford_plot_test.ipynb : Jupyter Notebook to test the graphs plotting ot the Benford Class
+    - flower.jpg     :   JPG image to test the Benford Class
+    - population.csv :   CSV dataset with the Wordl Population to test the Benford Class
 
 
 
@@ -53,8 +54,8 @@ As part of the Udacity Data Science nanodegree this is a project to create and d
 4. Graph or plot the results using plot() method
     - `benford.plot()`
 
-5. Save the results using exporto_csv() method:
-    - `benford.export_csv(filename)`
+5. Save the results using expor_to_csv() method:
+    - `benford.export_to_csv(filename)`
 
 
 ## Terms of use:
