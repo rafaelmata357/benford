@@ -56,21 +56,23 @@ The python version used: **3.8**
 
 ### Example using the pakage to analyze an image:
 
-```#Import libraries```
 
-```
+
+```python
+#Import libraries`
 import pandas as pd
 import numpy as np
 from benford import Benford
 import matplotlib.pyplot as plt
-from PIL import Image```
+from PIL import Image
 
 
-```image_file = 'flower.jpg'     #Read image
+image_file = 'flower.jpg'      #Read image
 image = Benford()              #Create Benford instance
 image.load_image(image_file)   #Load image
 image.benford_analysis()       #Do Analysis
-image.plot()                   #Plot Benford´s analysis```
+image.plot()                   #Plot Benford´s analysis
+```
 
 
 ![Example](https://github.com/rafaelmata357/benford/blob/master/docs/image-benford-analysis.png)
