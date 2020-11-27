@@ -1,6 +1,6 @@
 population.xlsx
 tests/__pycache__/test.cpython-38.pyc
-__pycache__/benford.cpython-38.pyc
+__pycache__/*
 .ipynb_checkpoints/benford_test-checkpoint.py
 .ipynb_checkpoints/benford-checkpoint.py
 population.xls
@@ -10,5 +10,8 @@ benford.egg-info
 Pipfile
 Pipfile.lock 
 .eggs/*
+__pycache__
 
-
+__pycache__/benford.cpython-38.pyc
+.DS_Store
+__pycache__/benford.cpython-38.pyc
