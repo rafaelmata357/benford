@@ -59,7 +59,7 @@ The python version used: **3.8**
 
 
 ```python
-#Import libraries`
+#Import libraries
 import pandas as pd
 import numpy as np
 from py-benford import Benford
@@ -81,7 +81,7 @@ image.plot()                   #Plot Benford´s analysis
 
 ## Terms of use:
 
-This is a tool to do  an initial analyzis using Benford´s Law  and plot how the digit´s probability are distributed on difffernt datasets, it is not a formal analysis or study using the Benford´s Law 
+This is a tool to do  an initial analyzis using Benford´s Law  and plot how the digit´s probability are distributed on different datasets, it is not a formal analysis or study using the Benford´s Law 
 
 ## License:
 
