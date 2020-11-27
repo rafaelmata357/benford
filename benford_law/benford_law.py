@@ -3,7 +3,7 @@
 #
 # PROGRAMMER:    Rafael Mata M.
 # DATE CREATED:  19 Nov 2020                                
-# REVISED DATE:  24 Nov 2020
+# REVISED DATE:  27 Nov 2020
 # PURPOSE: A Class to analyze a dataset of numbers and apply the Benfords Law counting the frequency of the first digit
 #          from 1 - 9
 #
