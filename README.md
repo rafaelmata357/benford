@@ -6,11 +6,8 @@ As part of the Udacity Data Science nanodegree this is a project to create and d
 
 ## Installation:
 
-Clone the repository to the local machine
+`pip intall benford`
 
-`$ gh repo clone rafaelmata357/benford`
-
-`pip intall .`
 
 This package uses this libraries
 
