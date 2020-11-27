@@ -24,8 +24,8 @@ The python version used: **3.8**
 - setup.py     : Setup file for the package
 - .gitignore   : File to ignore files and not load to the GitHub repository
 - LICENSE      : The MIT License
-- py-benford
-    - bendord.py     :   The Benford Class
+- benford_law
+    - bendord_law.py     :   The Benford Class
     - __init__.py    :   Inititalization file for the package
 - tests
     - tests.py       :   Script for unit tests of the Benford Class
