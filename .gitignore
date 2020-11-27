@@ -4,3 +4,11 @@ __pycache__/benford.cpython-38.pyc
 .ipynb_checkpoints/benford_test-checkpoint.py
 .ipynb_checkpoints/benford-checkpoint.py
 population.xls
+__pycache__/benford.cpython-38.pyc
+.ipynb_checkpoints/Untitled-checkpoint.ipynb
+benford.egg-info
+Pipfile
+Pipfile.lock 
+.eggs/*
+
+
