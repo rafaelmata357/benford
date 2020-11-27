@@ -9,7 +9,7 @@ As part of the Udacity Data Science nanodegree this is a project to create and d
 `pip intall py-benford`
 
 
-This package uses this libraries
+This package uses these libraries
 
 - pandas
 - numpy 
@@ -62,7 +62,7 @@ The python version used: **3.8**
 #Import libraries`
 import pandas as pd
 import numpy as np
-from benford import Benford
+from py-benford import Benford
 import matplotlib.pyplot as plt
 from PIL import Image
 
