@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="py-benford",
+    name="benford_law",
     version="0.1.1",
     author="Rafael Mata",
     author_email="rafaelmata357@gmail.com",
