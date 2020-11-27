@@ -6,7 +6,7 @@ As part of the Udacity Data Science nanodegree this is a project to create and d
 
 ## Installation:
 
-`pip intall py-benford`
+`pip intall benford_law`
 
 
 This package uses these libraries
@@ -62,7 +62,7 @@ The python version used: **3.8**
 #Import libraries
 import pandas as pd
 import numpy as np
-from py-benford import Benford
+from benford_law import Benford
 import matplotlib.pyplot as plt
 from PIL import Image
 
