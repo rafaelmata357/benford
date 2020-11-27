@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="benford_law",
-    version="0.1.1",
+    version="0.1.2",
     author="Rafael Mata",
     author_email="rafaelmata357@gmail.com",
     description="A python tool to calculate the Benford´s Law from a dataset or image",
