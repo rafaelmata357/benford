@@ -6,7 +6,7 @@ As part of the Udacity Data Science nanodegree this is a project to create and d
 
 ## Installation:
 
-`pip intall benford`
+`pip intall py-benford`
 
 
 This package uses this libraries
@@ -23,7 +23,8 @@ The python version used: **3.8**
 - README.md    : This file
 - setup.py     : Setup file for the package
 - .gitignore   : File to ignore files and not load to the GitHub repository
-- benford
+- LICENSE      : The MIT License
+- py-benford
     - bendord.py     :   The Benford Class
     - __init__.py    :   Inititalization file for the package
 - tests
@@ -53,10 +54,31 @@ The python version used: **3.8**
     - `benford.export_to_csv(filename)`
 
 
+### Example using the pakage to analyze an image:
+
+#Import libraries
+
+`import pandas as pd`
+`import numpy as np`
+`from benford import Benford`
+`import matplotlib.pyplot as plt`
+`from PIL import Image`
+
+
+`image_file = 'flower.jpg'`     #Read image
+`image = Benford()`             #Create Benford instance
+`image.load_image(image_file)`  #Load image
+`image.benford_analysis()`      #Do Analysis
+`image.plot()`                  #Plot Benford´s analysis
+
+![Example](https://github.com/rafaelmata357/benford/blob/master/docs/image-benford-analysis.png)
+
+
+
 ## Terms of use:
 
-This is tool to do  an initial analyzis using Benford´s Law  and is made only to show how the digit´s probability are distributed on difffernt datasets. 
+This is a tool to do  an initial analyzis using Benford´s Law  and plot how the digit´s probability are distributed on difffernt datasets, it is not a formal analysis or study using the Benford´s Law 
 
 ## License:
 
-The code follows this license: https://creativecommons.org/licenses/by/3.0/us/
+The code follows this license: https://opensource.org/licenses/MIT
