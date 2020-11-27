@@ -1,1 +1,1 @@
-from .benford import Benford
+from .benford_law import Benford
