@@ -3,7 +3,7 @@
 #
 # PROGRAMMER:    Rafael Mata M.
 # DATE CREATED:  19 Nov 2020                                
-# REVISED DATE:  27 Nov 2020
+# REVISED DATE:  30 Nov 2020
 # PURPOSE: A Class to analyze a dataset of numbers and apply the Benfords Law counting the frequency of the first digit
 #          from 1 - 9
 #
@@ -24,6 +24,27 @@ import matplotlib.pyplot as plt
 from PIL import Image
 
 class Benford:
+
+    ''' A Class to perform the Benford´S Law analysis for the first leading digits [1-9]
+    
+        Atributes:
+        -----------------------
+        dataset : numpy array of integers with the numbers to analyzed
+        normalized : boolean, flag to indicate if the output is normalized with the total values or the digits frequency
+        digits: numpy array with digits 1 to 9
+        digits_count: numpy array to store the leading digits frequency
+        reference: The Benford´s theorical reference for the leading digits
+
+        Methods:
+        ------------------------
+        __init__ : Method to initialize the attributes
+        load_daaset : Method to read a .csv file and load the dataset
+        load_image: Method to load an image and load the dataset 
+        benford_analysis: Mehtod to analyze the leading digits using the Benford´s Law
+        plot : Method to plot the resuls in a bar chart
+        export_to_csv : Method to export the results to a .csv file
+        
+    '''
     
     def __init__(self, dataset=None, normalized=True):
         """
