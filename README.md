@@ -74,6 +74,10 @@ image.benford_analysis()       #Do Analysis
 image.plot()                   #Plot Benford´s analysis
 ```
 
+Apply the Benford´s Law analysis to this image:
+
+![Example](https://github.com/rafaelmata357/benford/blob/master/tests/flower.jpg)
+
 
 ![Example](https://github.com/rafaelmata357/benford/blob/master/docs/image-benford-analysis.png)
 
