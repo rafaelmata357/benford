@@ -81,6 +81,9 @@ class Benford:
         except:
             print('The dataset could not be read, please check the address')
 
+        #if not type(x) is int:
+        #    raise TypeError("Only integers are allowed")
+
         return None
 
     def load_image(self, path):
@@ -94,9 +97,13 @@ class Benford:
             None
         """
         
-        image = np.array(Image.open(path))
-        print('Image read')
-        self.dataset = image
+        try:
+            image = np.array(Image.open(path))
+            print('Image read')
+            self.dataset = image
+        except:
+            print('The image could not be read, please check the address')
+        
 
         return None
 
