@@ -3,7 +3,7 @@
 #
 # PROGRAMMER:    Rafael Mata M.
 # DATE CREATED:  19 Nov 2020                                
-# REVISED DATE:  09 dic 2020
+# REVISED DATE:  13 dic 2020
 # PURPOSE: A Class to analyze a dataset of numbers and apply the Benfords Law counting the frequency of the first digit
 #          from 1 - 9
 #
@@ -197,7 +197,10 @@ class Benford:
 
         df = pd.DataFrame({'Benford Reference':[30.1,17.6,12.5,9.7,7.9,6.7,5.8,5.1,4.6],'P(D) results':self.digits_count},index=self.digits)
         df.index.rename('Digits',inplace=True)
-        df.to_csv(path, header=True)
+        try:
+            df.to_csv(path, header=True)
+        except:
+            print('File can not be saved, check the path')
 
         return None
 
